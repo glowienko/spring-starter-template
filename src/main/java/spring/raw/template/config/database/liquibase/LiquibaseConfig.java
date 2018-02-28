@@ -1,4 +1,4 @@
-package com.mayia.my.auth.server.config.liquibase;
+package spring.raw.template.config.database.liquibase;
 
 import org.springframework.context.annotation.Configuration;
 
@@ -6,4 +6,5 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class LiquibaseConfig {
 
+    //TODO: SETUP LIQUIBASE
 }
