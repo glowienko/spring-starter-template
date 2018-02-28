@@ -1,4 +1,4 @@
-# spring-starter-template
+# Spring starter template
 Raw Spring temaplte. 
 It provides files,configuration, dependencies that are nearly always need at the begining.
 

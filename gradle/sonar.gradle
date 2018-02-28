@@ -1,0 +1,14 @@
+//TODO: SET UP THIS
+
+/*
+
+plugins {
+  id "org.sonarqube" version "2.5"
+}
+
+simple running:
+./gradlew sonarqube \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.login=868e173137a999632c648f80f13bd0edee87d12e
+
+*/
