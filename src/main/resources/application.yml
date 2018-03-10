@@ -1,29 +1,20 @@
 spring:
   application:
-    name: Auth Server
+    name: Spring raw template
   profiles:
     active:
-      - dev
+      - h2
+#      - mysql  #when mysql
       - localhost
-  jpa:
-    repositories:
-      enabled: true
-    hibernate:
-      ddl-auto: create-drop
-      naming:
-        strategy: org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy
-#H2
-  datasource:
-    url: jdbc:h2:~/test
-    name: test
-    username: root
-    password: root
-    driver-class-name: org.h2.Driver
-  h2:
-    console:
-      enabled: true
-      path: /h2
 
+logging:
+  level:
+    org.springframework: INFO
+#liquibase:
+#  change-log: classpath:database/changelog/db-changelog.xml uncomment when using liquibase - db-changelog.xml in resources
 
 server:
   port: 9095
+
+
+
