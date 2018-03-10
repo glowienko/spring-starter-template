@@ -1,33 +1,46 @@
 buildscript {
     repositories {
         mavenCentral()
+        maven { url "http://repo.spring.io/plugins-release" }
+        maven { url "http://repo.spring.io/milestone" }
+        maven { url "https://plugins.gradle.org/m2/" }
         mavenLocal()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath ("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:${sonarPluginVersion}")
     }
 }
 
-plugins {
-    id "org.sonarqube" version "2.5"
-}
-
-repositories{
+repositories {
     mavenCentral()
+    maven { url "http://repo.spring.io/plugins-release" }
+    maven { url "http://repo.spring.io/milestone" }
+    maven { url "https://plugins.gradle.org/m2/" }
+    mavenLocal()
 }
 
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'maven-publish'
-apply plugin: "org.sonarqube"
+
+apply from: 'gradle/sonar.gradle'
+apply from: 'gradle/coverage.gradle'
+
+group = projectGroup
+sourceCompatibility = javaVersion
+targetCompatibility = javaVersion
+
+
+jar {
+    baseName = projectName
+}
 
 
 dependencies {
+    runtime('com.h2database:h2')
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
-
-    runtime('com.h2database:h2')
 
     compile group: 'org.projectlombok', name: 'lombok', version: lombokVersion
     compile group: 'com.google.guava', name: 'guava', version: guavaVersion
@@ -35,4 +48,7 @@ dependencies {
 
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
 
+}
+
+task wrapper(type: Wrapper) {
 }

@@ -1,0 +1,7 @@
+apply plugin: JacocoPlugin
+
+jacoco { toolVersion = '0.7.4+' }
+
+jacocoTestReport {
+    reports { xml.enabled true }
+}

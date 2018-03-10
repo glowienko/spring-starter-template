@@ -1,14 +1,31 @@
-//TODO: SET UP THIS
+apply plugin: 'org.sonarqube'
 
-/*
+sonarqube {
+    properties {
+        property "sonar.projectName", "spring-template"
+        property "sonar.projectKey", "spring.raw.template"
 
-plugins {
-  id "org.sonarqube" version "2.5"
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.scm.url", "https://github.com/glowienko/spring-starter-template.git"
+
+        property "sonar.jdbc.url", "jdbc:postgresql://localhost:5432/sonar"
+        property "sonar.jdbc.driverClassName", "org.postgresql.Driver"
+        property "sonar.jdbc.username", "root"
+        property "sonar.jdbc.password", "root"
+
+        property "sonar.exclusions", "**/folderName/*.java"
+
+    }
 }
 
-simple running:
-./gradlew sonarqube \
-  -Dsonar.host.url=http://localhost:9000 \
-  -Dsonar.login=868e173137a999632c648f80f13bd0edee87d12e
+//simple running:
+//./gradlew sonarqube \
+//  -Dsonar.host.url=http://localhost:9000 \
+//  -Dsonar.login=868e173137a999632c648f80f13bd0edee87d12e
+//
 
-*/
+/*
+systemProp.sonar.host.url=http://localhost:9000
+sonar.forceAuthentication = true
+systemProp.sonar.login=21f3ff8e8aeccf694cbd12ebfa0caf915fbd5cd9
+* */
