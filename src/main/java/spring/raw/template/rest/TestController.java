@@ -10,6 +10,6 @@ public class TestController {
 
     @GetMapping
     public String test() {
-        return "test działa! ";
+        return "server is working! ";
     }
 }

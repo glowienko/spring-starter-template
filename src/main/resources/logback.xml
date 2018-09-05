@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
-    <logger name="org.springframework.web" level="DEBUG"/>
-    <logger name="org.springframework.data" level="DEBUG"/>
+    <timestamp key="nowTimestamp" timeReference="contextBirth" datePattern="yyyy-MM-dd'_time:_'HH:mm:ss"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <property name="LOG_DIR" value="/logs" />  <!-- set logging to file -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/general-log-${nowTimestamp}.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework.web"
+            level="INFO"/>   <!-- some custom logging level for specific spring packages -->
+    <logger name="org.springframework.data" level="ERROR"/>
+    <logger name="spring.raw.template" level="INFO">
+        <appender-ref ref="FILE"/></logger>
 </configuration>
+
+
+<!--info : https://www.baeldung.com/logback-->
+
+<!--loggers - from what class or package log is, setting log levels-->
+<!--appenders - specify format and log destination-->
+
+
+        <!--use @Slf4j and log.someLevel() to log messages-->
+        <!--if there are many loggers - child package logger wont log anything if parent package logger has higher log level - in
+         the same context - class-->

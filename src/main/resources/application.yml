@@ -4,14 +4,16 @@ spring:
   profiles:
     active:
       - h2
-#      - mysql  #when mysql
       - localhost
+      #      - mysql  #when mysql
+
 
 logging:
   level:
     org.springframework: INFO
-#liquibase:
-#  change-log: classpath:database/changelog/db-changelog.xml uncomment when using liquibase - db-changelog.xml in resources
+  path: logs
+liquibase:
+  change-log: classpath:database/base-db-changelog.xml
 
 server:
   port: 9095
